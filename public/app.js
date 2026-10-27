@@ -1,0 +1,9 @@
+const menu=document.querySelector('.menu-button');const nav=document.querySelector('#navigation');
+function closeMenu(){menu?.setAttribute('aria-expanded','false');nav?.classList.remove('open');}
+menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')==='true';menu.setAttribute('aria-expanded',String(!open));nav.classList.toggle('open',!open);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu?.getAttribute('aria-expanded')==='true'){closeMenu();menu.focus();}});
+document.addEventListener('click',e=>{if(!e.target.closest('.header'))closeMenu();});
+const region=document.querySelector('#region'),search=document.querySelector('#appellation');const cards=[...document.querySelectorAll('.grower-card')];const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+function filter(){let count=0;for(const card of cards){const visible=(!region.value||card.dataset.region===region.value)&&normalize(card.dataset.search).includes(normalize(search.value.trim()));card.hidden=!visible;if(visible)count++;}document.querySelector('#result-count').textContent=count+' participant'+(count>1?'s':'');document.querySelector('#no-results').hidden=count>0;}
+region?.addEventListener('change',filter);search?.addEventListener('input',filter);document.querySelector('.filters')?.addEventListener('reset',()=>setTimeout(filter,0));
+if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('revealed');observer.unobserve(entry.target);}});},{threshold:.08});document.querySelectorAll('.section-head,.split,.event-card,.grower-card,.gallery').forEach(el=>{el.classList.add('reveal');observer.observe(el);});}

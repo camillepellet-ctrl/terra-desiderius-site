@@ -1,0 +1,31 @@
+{
+  "name": "Terra Desiderius",
+  "email": "terra.desiderius@gmail.com",
+  "instagram": "https://www.instagram.com/terra_desiderius/",
+  "facebook": "https://www.facebook.com/terra.desiderius",
+  "salon": {"edition":25,"start":"2026-12-05","end":"2026-12-06","place":"Espace Laurent Bonnevay","city":"Saint-Didier-au-Mont-d’Or","saturday":"10 h – 20 h","sunday":"10 h – 18 h","expected":24},
+  "growers": [
+    {"name":"Vins Krick","region":"Alsace","appellations":"Alsace","note":"Anciennement Domaine Ziegler Fugler."},
+    {"name":"Domaine La Ricottière","region":"Beaujolais","appellations":"Beaujolais"},
+    {"name":"Domaine Les Baies Goûts","region":"Vallée du Rhône","appellations":"Beaumes-de-Venise · Vacqueyras · Ventoux"},
+    {"name":"Domaine Monin","region":"Bugey","appellations":"Bugey"},
+    {"name":"Château de Hauterive","region":"Sud-Ouest","appellations":"Cahors"},
+    {"name":"Domaine Les Sources de l’Oppidum","region":"Cévennes / Rhône","appellations":"Cévennes · Côtes-du-Rhône"},
+    {"name":"Domaine Cheurlin Dangin","region":"Champagne","appellations":"Champagne"},
+    {"name":"Domaine La Destinée","region":"Vallée du Rhône","appellations":"Châteauneuf-du-Pape"},
+    {"name":"Domaine Decrenisse","region":"Lyonnais","appellations":"Coteaux du Lyonnais"},
+    {"name":"Domaine Mas de l’Erme","region":"Languedoc","appellations":"Hérault · Terrasses du Larzac"},
+    {"name":"Domaine Christophe Bombrun","region":"Vallée du Rhône","appellations":"Saint-Joseph"},
+    {"name":"Domaine Jean-Paul David","region":"Loire","appellations":"Loire"},
+    {"name":"Château Troquart","region":"Bordeaux","appellations":"Montagne-Saint-Émilion"},
+    {"name":"Château La Ressaudie","region":"Sud-Ouest","appellations":"Montravel · Bergerac"},
+    {"name":"Maison Safranier","region":"Vallée du Rhône","appellations":"Rasteau"},
+    {"name":"Domaine de l’Envolée","region":"Languedoc","appellations":"Côtes de Thongue"},
+    {"name":"Les Petites Liqueurs d’Alice","region":"Liqueurs artisanales","appellations":"Liqueurs artisanales"}
+  ],
+  "events": [
+    {"title":"Le P’tit Salon des Vins","date":"2026-12-05","end":"2026-12-06","display":"5 & 6 décembre 2026","place":"Espace Laurent Bonnevay","description":"Deux journées pour découvrir les terroirs, déguster et acheter directement auprès des vignerons.","href":"salon-des-vins/","image":null,"facebook":null},
+    {"title":"La Matinée boudin","date":null,"display":"Prochaine date à annoncer","place":"Saint-Didier-au-Mont-d’Or","description":"Un rendez-vous traditionnel et convivial organisé avec la FNACA.","image":null,"facebook":null},
+    {"title":"Les rendez-vous du village","date":null,"display":"Au fil de l’année","place":"Saint-Didier-au-Mont-d’Or","description":"Apéritifs, rencontres et manifestations locales : autant d’occasions de se retrouver.","image":null,"facebook":null}
+  ]
+}
