@@ -50,3 +50,12 @@ Les contrôles du CSV réel et du JSON public ont été retentés : refus CONNEC
 La synchronisation conserve les en-têtes réels dans sourceColumns. Le diagnostic généré distingue colonnes absentes, cellules vides et source non vérifiée, et est déployé au même moment que la galerie test. Aucun contenu de feuille privée n’est demandé.
 
 13 tests Node passent, dont les états du diagnostic et les liens Maps. Les tests navigateur parcourent l’import CSV simulé, le JSON produit et la fiche : cas sans coordonnées, colonnes absentes, cellule vide, téléphone et Instagram seuls, et contact complet incluant Maps. Les données fictives restent hors du dépôt et ne sont pas publiées. La démonstration visuelle est servie uniquement sur un serveur local séparé. Le dossier officiel reste inchangé.
+
+
+## Diagnostic de synchronisation et sélection de l’onglet
+
+La source publiée enregistrée ne comportait aucun gid : elle ne sélectionnait pas explicitement l’onglet attendu. L’API GitHub refusant l’accès, une éventuelle variable SHEETS_CSV_URL prioritaire n’a pas pu être inspectée. Aucun contenu réel du CSV ni des contacts nouvellement saisis ne peut être confirmé depuis cet environnement. Le lancement manuel par gh workflow run a été tenté et refusé par le réseau ; l’import local a également échoué à la connexion, sans modifier le snapshot.
+
+Le lien par défaut est maintenant centralisé dans gallery/sheets-config.json. Le gid **664297734** a ensuite été fourni par l’association et fixé dans cette configuration ; aucune valeur n’est inventée. SHEETS_GID permet de le régler sans changer le code. Le rapport conserve la source effective, l’origine du réglage, l’onglet sélectionné, l’heure UTC, le numéro de run et l’empreinte du CSV. Les restrictions range et tq sont refusées. Les colonnes additionnelles ne bloquent plus l’import, mais leurs valeurs ne sont pas reprises.
+
+15 tests passent, dont l’import des contacts situés après la colonne J, l’ajout d’une colonne supplémentaire et la sélection explicite d’un onglet de recette. Le contrôle post-build compare les données importées au JSON généré, vérifie la cohérence du diagnostic et compare le contenu officiel généré à son snapshot conservé. L’automatisation est programmée environ toutes les trente minutes. Le snapshot officiel n’est pas modifié.

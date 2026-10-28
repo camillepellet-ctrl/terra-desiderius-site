@@ -26,7 +26,7 @@ Le lien de publication transmis a été converti en source CSV par défaut du wo
 
 https://docs.google.com/spreadsheets/d/e/2PACX-1vS2AH9tvuY23x1UOmhhp-Y2tuJvEbl2BYe4eaRwKBzdsFLag89qg14DA4jyR6hyTAwFnqFUTfAH614_/pub?output=csv
 
-Le lien `/pubhtml` sert à la lecture dans un navigateur ; `/pub?output=csv` sert à la synchronisation. Le contenu et les en-têtes restent à vérifier après un import réel. Si plusieurs onglets sont publiés, ajouter le paramètre `gid` de l’onglet des vignerons pour le sélectionner explicitement. La variable GitHub `SHEETS_CSV_URL`, si elle existe, reste prioritaire ; elle permet de sélectionner explicitement un autre onglet ou un lien CSV publié.
+Le lien `/pubhtml` sert à la lecture dans un navigateur ; `/pub?output=csv` sert à la synchronisation. Le contenu et les en-têtes restent à vérifier après un import réel. Si plusieurs onglets sont publiés, ajouter le paramètre `gid` de l’onglet des vignerons pour le sélectionner explicitement. La variable GitHub `SHEETS_CSV_URL`, si elle existe, reste prioritaire sur `gallery/sheets-config.json` ; elle permet de sélectionner explicitement un autre onglet ou un lien CSV publié.
 
 L’accès depuis l’environnement a échoué au niveau du proxy réseau (CONNECT HTTP 403), avant réponse de Google. Le contenu et les droits de partage du classeur ne sont donc pas vérifiés. Ce refus ne prouve pas que la feuille est privée. Une erreur d’import interrompt le déploiement et conserve la précédente galerie publique ; aucune donnée officielle n’est modifiée.
 
@@ -41,7 +41,7 @@ Pour une source durable et limitée à l’onglet voulu, utiliser **Fichier → 
 5. Si nécessaire, dans **Settings → Pages**, sélectionner **GitHub Actions** comme source. Ne pas configurer de domaine personnalisé. L’offre gratuite GitHub Pages requiert notamment un dépôt public ; ne pas souscrire d’offre payante.
 6. Après succès du workflow entier, ouvrir la galerie test, vérifier les données et lire sa date de synchronisation. Noter le numéro de run affiché dans le résumé du workflow pour une éventuelle validation officielle.
 
-Le workflow est également programmé toutes les deux heures. GitHub et la republication Google peuvent ajouter un délai. Les tâches planifiées peuvent être désactivées par GitHub après une période d’inactivité ; le lancement manuel reste disponible. Les visiteurs ne se connectent jamais directement à Google Sheets : ils consultent le dernier snapshot déployé. Une URL publiée ne sécurise pas des données privées : toutes les données du CSV sont publiques, même les lignes masquées dans la galerie.
+Le workflow est également programmé toutes les trente minutes environ (à :07 et :37 UTC). GitHub et la republication Google peuvent ajouter un délai. Les tâches planifiées peuvent être désactivées par GitHub après une période d’inactivité ; le lancement manuel reste disponible. Les visiteurs ne se connectent jamais directement à Google Sheets : ils consultent le dernier snapshot déployé. Une URL publiée ne sécurise pas des données privées : toutes les données du CSV sont publiques, même les lignes masquées dans la galerie.
 
 ## 3. Intégrer dans Google Sites Test
 
@@ -107,3 +107,14 @@ Pour intégrer l’édition 2027, changer seulement `?edition=2026` en `?edition
 ## Accès et référencement
 
 Le test et la version officielle hébergée sont publiquement accessibles et comportent `noindex, nofollow` ; cela évite de proposer ces cadres autonomes à l’indexation mais ne constitue pas un contrôle d’accès. Garder les informations essentielles dans les blocs natifs Google Sites pour le référencement. Aucun abonnement, backend, publicité, police distante ou outil de suivi n’est nécessaire.
+
+
+## Sélectionner précisément l’onglet et relancer sans code
+
+L’onglet confirmé par l’association porte le gid **664297734**. Il est désormais fixé dans `gallery/sheets-config.json`. Sauf variable GitHub `SHEETS_GID` prioritaire, toutes les synchronisations visent cet onglet. Le nom du classeur ne détermine pas l’onglet exporté. Ouvrir l’onglet contenant les contacts, puis relever le nombre `gid` dans l’URL Google Sheets (après `#gid=` ou `?gid=`). Dans GitHub **Settings → Secrets and variables → Actions → Variables**, créer `SHEETS_GID` avec ce nombre, y compris `0` si c’est l’identifiant effectivement affiché. Ne pas deviner ce nombre. Il doit appartenir à un onglet publié.
+
+Vérifier également `SHEETS_CSV_URL` : si cette variable existe et vise une ancienne publication, la corriger avec le lien publié actuel ou la supprimer pour reprendre le lien enregistré dans `gallery/sheets-config.json`. Ne jamais utiliser de restriction `range=A:J` ou de requête `tq` : l’import les refuse désormais pour éviter une troncature des colonnes.
+
+Pour relancer : **Actions → Build and deploy GitHub Pages → Run workflow → main → Run workflow**. Attendre la réussite du job `deploy`, pas seulement du job `build`. Le résumé du run indique l’URL effective, le `gid`, les colonnes réellement reçues, l’empreinte du CSV, l’heure d’import UTC et la présence des coordonnées de Vins Krick. Le diagnostic public expose les mêmes informations après déploiement. Si le job échoue, l’ancienne page et son ancien horodatage restent visibles.
+
+Les modifications Sheets n’envoient pas de notification instantanée à GitHub : l’action planifiée les relit environ toutes les trente minutes, avec des retards possibles de GitHub ou de republication Google. En cas d’inactivité prolongée du dépôt, GitHub peut désactiver les tâches planifiées ; les réactiver dans Actions. Aucun changement de code n’est requis pour les mises à jour de contenu.

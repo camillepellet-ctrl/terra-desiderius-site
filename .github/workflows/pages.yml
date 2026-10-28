@@ -4,7 +4,7 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    - cron: '17 */2 * * *'
+    - cron: '7,37 * * * *'
 permissions:
   contents: read
   pages: write
@@ -26,11 +26,14 @@ jobs:
       - name: Synchroniser la feuille vers la version test uniquement
         run: node scripts/sync-sheet.mjs
         env:
-          SHEETS_CSV_URL: ${{ vars.SHEETS_CSV_URL || 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS2AH9tvuY23x1UOmhhp-Y2tuJvEbl2BYe4eaRwKBzdsFLag89qg14DA4jyR6hyTAwFnqFUTfAH614_/pub?output=csv' }}
+          SHEETS_CSV_URL: ${{ vars.SHEETS_CSV_URL }}
+          SHEETS_GID: ${{ vars.SHEETS_GID }}
       - run: npm run build
         env:
           BASE_PATH: /terra-desiderius-site/
           SITE_ORIGIN: https://camillepellet-ctrl.github.io
+      - name: Vérifier la chaîne import vers JSON et préserver l’officiel
+        run: node scripts/verify-gallery.mjs
       - name: Conserver exactement la galerie test à valider
         uses: actions/upload-artifact@v4
         with:
