@@ -41,3 +41,12 @@ Aucun Google Sites, domaine ou DNS n’est modifié. La galerie officielle reste
 - Les 17 données initiales sont conservées sans coordonnées inventées. Le dossier `gallery/official` n’a pas été modifié ; aucune promotion officielle n’est exécutée.
 
 L’accès depuis l’environnement à GitHub Pages et à l’API Actions demeure refusé par le proxy (HTTP 403). La nouvelle version est vérifiée localement ; le déploiement distant et la synchronisation de la feuille utilisateur restent à confirmer par le workflow réel. Les nouvelles colonnes n’ont pas été ajoutées directement à la feuille Google : le guide explique comment les ajouter sans écraser les données existantes.
+
+
+## Correction de la rubrique de contact
+
+Les contrôles du CSV réel et du JSON public ont été retentés : refus CONNECT HTTP 403 du proxy. Leur contenu actuel reste non vérifié. Le jeu initial local ne contient aucune coordonnée pour Vins Krick. Une rubrique absente ne permettait pas de distinguer l’absence de données d’un défaut d’affichage ; le test signale désormais explicitement les coordonnées à compléter.
+
+La synchronisation conserve les en-têtes réels dans sourceColumns. Le diagnostic généré distingue colonnes absentes, cellules vides et source non vérifiée, et est déployé au même moment que la galerie test. Aucun contenu de feuille privée n’est demandé.
+
+13 tests Node passent, dont les états du diagnostic et les liens Maps. Les tests navigateur parcourent l’import CSV simulé, le JSON produit et la fiche : cas sans coordonnées, colonnes absentes, cellule vide, téléphone et Instagram seuls, et contact complet incluant Maps. Les données fictives restent hors du dépôt et ne sont pas publiées. La démonstration visuelle est servie uniquement sur un serveur local séparé. Le dossier officiel reste inchangé.

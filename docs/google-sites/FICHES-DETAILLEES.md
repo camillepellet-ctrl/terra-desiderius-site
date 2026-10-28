@@ -2,6 +2,10 @@
 
 La feuille actuelle reste compatible : les dix anciennes colonnes continuent de fonctionner. Ne pas réimporter le modèle par-dessus votre feuille si vous y avez déjà ajouté des informations. Aucune coordonnée des 17 domaines n’a été inventée ou préremplie.
 
+Voir aussi [la vérification des coordonnées et de la synchronisation](COORDONNEES.md). La rubrique regroupe désormais adresse, contact et réseaux ; un diagnostic explicite est visible dans le test lorsque toutes les coordonnées sont absentes.
+
+Une colonne facultative supplémentaire `google_maps` permet de saisir un lien Maps vérifié. Sans elle, seule une adresse renseignée permet de proposer une recherche Maps.
+
 ## 1. Ajouter les neuf nouvelles colonnes
 
 Dans l’onglet publié contenant les vignerons, ajoutez à droite de `photo_alt` ces intitulés exacts, un par colonne :
