@@ -20,7 +20,11 @@ Le Google Sheets doit être créé dans votre compte : cet environnement n’a p
 ## Feuille transmise par l’association
 
 Le classeur transmis est https://docs.google.com/spreadsheets/d/1q7nSY_6QqdtTF0TELxhjIBo2hpZYUwsZwEUWO57M9D4/edit.
-Le workflow essaie maintenant son export CSV comme source par défaut. Il faut que le premier onglet contienne le modèle attendu et que son export soit accessible sans connexion Google. La variable GitHub `SHEETS_CSV_URL`, si elle existe, reste prioritaire ; elle permet de sélectionner explicitement un autre onglet ou un lien CSV publié.
+Le lien de publication transmis a été converti en source CSV par défaut du workflow :
+
+https://docs.google.com/spreadsheets/d/e/2PACX-1vS2AH9tvuY23x1UOmhhp-Y2tuJvEbl2BYe4eaRwKBzdsFLag89qg14DA4jyR6hyTAwFnqFUTfAH614_/pub?output=csv
+
+Le lien `/pubhtml` sert à la lecture dans un navigateur ; `/pub?output=csv` sert à la synchronisation. Le contenu et les en-têtes restent à vérifier après un import réel. Si plusieurs onglets sont publiés, ajouter le paramètre `gid` de l’onglet des vignerons pour le sélectionner explicitement. La variable GitHub `SHEETS_CSV_URL`, si elle existe, reste prioritaire ; elle permet de sélectionner explicitement un autre onglet ou un lien CSV publié.
 
 L’accès depuis l’environnement a échoué au niveau du proxy réseau (CONNECT HTTP 403), avant réponse de Google. Le contenu et les droits de partage du classeur ne sont donc pas vérifiés. Ce refus ne prouve pas que la feuille est privée. Une erreur d’import interrompt le déploiement et conserve la précédente galerie publique ; aucune donnée officielle n’est modifiée.
 

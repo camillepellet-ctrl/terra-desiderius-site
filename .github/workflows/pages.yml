@@ -26,7 +26,7 @@ jobs:
       - name: Synchroniser la feuille vers la version test uniquement
         run: node scripts/sync-sheet.mjs
         env:
-          SHEETS_CSV_URL: ${{ vars.SHEETS_CSV_URL || 'https://docs.google.com/spreadsheets/d/1q7nSY_6QqdtTF0TELxhjIBo2hpZYUwsZwEUWO57M9D4/export?format=csv' }}
+          SHEETS_CSV_URL: ${{ vars.SHEETS_CSV_URL || 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS2AH9tvuY23x1UOmhhp-Y2tuJvEbl2BYe4eaRwKBzdsFLag89qg14DA4jyR6hyTAwFnqFUTfAH614_/pub?output=csv' }}
       - run: npm run build
         env:
           BASE_PATH: /terra-desiderius-site/
