@@ -17,6 +17,15 @@ Le Google Sheets doit être créé dans votre compte : cet environnement n’a p
 7. Copiez le lien publié : il commence par `https://docs.google.com/spreadsheets/` et renvoie un CSV, pas une page d’édition. Ne publiez aucun onglet privé ni coordonnées personnelles. Un compte Google Workspace peut interdire cette publication ; dans ce cas, demander à son administrateur ou utiliser un compte autorisant les données publiques.
 8. Conservez l’URL d’édition du classeur pour vos mises à jour quotidiennes. Ne donnez pas de droit d’édition aux visiteurs.
 
+## Feuille transmise par l’association
+
+Le classeur transmis est https://docs.google.com/spreadsheets/d/1q7nSY_6QqdtTF0TELxhjIBo2hpZYUwsZwEUWO57M9D4/edit.
+Le workflow essaie maintenant son export CSV comme source par défaut. Il faut que le premier onglet contienne le modèle attendu et que son export soit accessible sans connexion Google. La variable GitHub `SHEETS_CSV_URL`, si elle existe, reste prioritaire ; elle permet de sélectionner explicitement un autre onglet ou un lien CSV publié.
+
+L’accès depuis l’environnement a échoué au niveau du proxy réseau (CONNECT HTTP 403), avant réponse de Google. Le contenu et les droits de partage du classeur ne sont donc pas vérifiés. Ce refus ne prouve pas que la feuille est privée. Une erreur d’import interrompt le déploiement et conserve la précédente galerie publique ; aucune donnée officielle n’est modifiée.
+
+Pour une source durable et limitée à l’onglet voulu, utiliser **Fichier → Partager → Publier sur le Web**, sélectionner uniquement l’onglet des vignerons au format CSV, puis renseigner son URL publiée dans `SHEETS_CSV_URL`. Ne pas publier d’onglets privés.
+
 ## 2. Connecter Sheets à la galerie test
 
 1. Dans le dépôt GitHub, ouvrez **Settings → Secrets and variables → Actions → Variables → New repository variable**.
