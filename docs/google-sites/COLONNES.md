@@ -1,6 +1,6 @@
 # Modèle Google Sheets — une ligne par domaine
 
-Le fichier `vignerons-modele.csv` contient les 17 participants fournis, sans photographie, site web ou présentation inventés. Le modèle est importable tel quel. Ne pas ajouter les exemples pédagogiques ci-dessous comme de nouveaux participants.
+Le fichier `vignerons-modele.csv` contient les 17 participants fournis, sans photographie, site web ou présentation inventés. Le modèle est importable tel quel. Le modèle est désormais enrichi de neuf colonnes facultatives ; voir [le guide des fiches détaillées](FICHES-DETAILLEES.md). Les feuilles utilisant les dix colonnes initiales restent compatibles. Ne pas ajouter les exemples pédagogiques ci-dessous comme de nouveaux participants.
 
 | Colonne exacte | Obligatoire | Contenu et exemple de format |
 | --- | --- | --- |
@@ -24,4 +24,4 @@ Le fichier `vignerons-modele.csv` contient les 17 participants fournis, sans pho
 - **Nouvelle édition** : ajouter l’année confirmée dans `annees`, sans recopier la ligne.
 - **Images** : les copier dans un hébergement public autorisé et renseigner leur adresse directe. Avec un stockage GitHub, le téléchargement via l’interface web ne demande pas d’écrire du code. Utiliser un nouveau nom pour chaque nouvelle photo. Ne pas publier de portraits sans autorisation.
 
-Ne pas fusionner les cellules, déplacer les informations dans un second onglet ou ajouter des commentaires sous le tableau : chaque ligne non vide est traitée comme une fiche. Les colonnes peuvent être réordonnées, mais les dix en-têtes doivent être conservés exactement, sans doublon ni colonne supplémentaire. Une erreur de validation empêche le déploiement et conserve la version publique précédente.
+Ne pas fusionner les cellules, déplacer les informations dans un second onglet ou ajouter des commentaires sous le tableau : chaque ligne non vide est traitée comme une fiche. Les colonnes peuvent être réordonnées, mais les en-têtes présents doivent être exacts, sans doublon ni colonne inconnue. Seuls `id`, `nom`, `annees` et `afficher` sont obligatoires. Les colonnes facultatives peuvent être absentes. Une erreur de validation empêche le déploiement et conserve la version publique précédente.

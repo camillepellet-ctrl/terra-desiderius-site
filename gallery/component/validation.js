@@ -1,0 +1,4 @@
+export function safeURL(value){if(!value)return null;try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password?u.href:null;}catch{return null;}}
+export function emailHref(value){if(!value||value.length>254||! /^[A-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?(?:\.[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?)+$/i.test(value))return null;return 'mailto:'+encodeURIComponent(value);}
+export function phoneHref(value){if(!value||!/^\+?[\d\s().-]+$/.test(value))return null;const number=value.replace(/^(\+\d{1,3})\s*\(0\)/,'$1').replace(/[\s().-]/g,'');return /^\+?\d{6,15}$/.test(number)?'tel:'+number:null;}
+export function socialLinks(value){if(!value)return [];return value.split('|').map(entry=>{const at=entry.indexOf('=');const label=entry.slice(0,at).trim(),url=entry.slice(at+1).trim();if(at<1||!label||!safeURL(url))throw Error('Format attendu pour autres_reseaux : Nom=https://adresse | Nom=https://adresse');return {label,url};});}
