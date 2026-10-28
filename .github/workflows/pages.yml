@@ -3,13 +3,15 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: '17 */2 * * *'
 permissions:
   contents: read
   pages: write
   id-token: write
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,14 +23,30 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts
       - run: npm test
+      - name: Synchroniser la feuille vers la version test uniquement
+        run: node scripts/sync-sheet.mjs
+        env:
+          SHEETS_CSV_URL: ${{ vars.SHEETS_CSV_URL }}
       - run: npm run build
         env:
           BASE_PATH: /terra-desiderius-site/
           SITE_ORIGIN: https://camillepellet-ctrl.github.io
+      - name: Conserver exactement la galerie test à valider
+        uses: actions/upload-artifact@v4
+        with:
+          name: galerie-test-validation
+          path: dist/galerie/test
+          retention-days: 30
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+      - name: Résumé de validation
+        run: |
+          echo '## Galerie test' >> "$GITHUB_STEP_SUMMARY"
+          echo 'URL prévue après déploiement : https://camillepellet-ctrl.github.io/terra-desiderius-site/galerie/test/?edition=2026' >> "$GITHUB_STEP_SUMMARY"
+          echo "Numéro de version à valider pour publication officielle : $GITHUB_RUN_ID" >> "$GITHUB_STEP_SUMMARY"
+          echo 'La version officielle est conservée sans modification.' >> "$GITHUB_STEP_SUMMARY"
   deploy:
     environment:
       name: github-pages

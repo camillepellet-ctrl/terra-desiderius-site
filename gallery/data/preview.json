@@ -1,0 +1,318 @@
+{
+  "source": "initial",
+  "syncedAt": null,
+  "growers": [
+    {
+      "id": "domaine-01",
+      "name": "Vins Krick",
+      "regions": [
+        "Alsace"
+      ],
+      "appellations": [
+        "Alsace"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "Anciennement Domaine Ziegler Fugler.",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "id": "domaine-02",
+      "name": "Domaine La Ricottière",
+      "regions": [
+        "Beaujolais"
+      ],
+      "appellations": [
+        "Beaujolais"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "id": "domaine-03",
+      "name": "Domaine Les Baies Goûts",
+      "regions": [
+        "Vallée du Rhône"
+      ],
+      "appellations": [
+        "Beaumes-de-Venise",
+        "Vacqueyras",
+        "Ventoux"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "id": "domaine-04",
+      "name": "Domaine Monin",
+      "regions": [
+        "Bugey"
+      ],
+      "appellations": [
+        "Bugey"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "id": "domaine-05",
+      "name": "Château de Hauterive",
+      "regions": [
+        "Sud-Ouest"
+      ],
+      "appellations": [
+        "Cahors"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "id": "domaine-06",
+      "name": "Domaine Les Sources de l’Oppidum",
+      "regions": [
+        "Cévennes",
+        "Rhône"
+      ],
+      "appellations": [
+        "Cévennes",
+        "Côtes-du-Rhône"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "id": "domaine-07",
+      "name": "Domaine Cheurlin Dangin",
+      "regions": [
+        "Champagne"
+      ],
+      "appellations": [
+        "Champagne"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "id": "domaine-08",
+      "name": "Domaine La Destinée",
+      "regions": [
+        "Vallée du Rhône"
+      ],
+      "appellations": [
+        "Châteauneuf-du-Pape"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "id": "domaine-09",
+      "name": "Domaine Decrenisse",
+      "regions": [
+        "Lyonnais"
+      ],
+      "appellations": [
+        "Coteaux du Lyonnais"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "id": "domaine-10",
+      "name": "Domaine Mas de l’Erme",
+      "regions": [
+        "Languedoc"
+      ],
+      "appellations": [
+        "Hérault",
+        "Terrasses du Larzac"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "id": "domaine-11",
+      "name": "Domaine Christophe Bombrun",
+      "regions": [
+        "Vallée du Rhône"
+      ],
+      "appellations": [
+        "Saint-Joseph"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "id": "domaine-12",
+      "name": "Domaine Jean-Paul David",
+      "regions": [
+        "Loire"
+      ],
+      "appellations": [
+        "Loire"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "id": "domaine-13",
+      "name": "Château Troquart",
+      "regions": [
+        "Bordeaux"
+      ],
+      "appellations": [
+        "Montagne-Saint-Émilion"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "id": "domaine-14",
+      "name": "Château La Ressaudie",
+      "regions": [
+        "Sud-Ouest"
+      ],
+      "appellations": [
+        "Montravel",
+        "Bergerac"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "id": "domaine-15",
+      "name": "Maison Safranier",
+      "regions": [
+        "Vallée du Rhône"
+      ],
+      "appellations": [
+        "Rasteau"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "id": "domaine-16",
+      "name": "Domaine de l’Envolée",
+      "regions": [
+        "Languedoc"
+      ],
+      "appellations": [
+        "Côtes de Thongue"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    {
+      "id": "domaine-17",
+      "name": "Les Petites Liqueurs d’Alice",
+      "regions": [
+        "Liqueurs artisanales"
+      ],
+      "appellations": [
+        "Liqueurs artisanales"
+      ],
+      "years": [
+        2026
+      ],
+      "visible": true,
+      "description": "",
+      "website": "",
+      "image": "",
+      "imageAlt": ""
+    }
+  ]
+}

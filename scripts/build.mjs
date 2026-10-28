@@ -26,3 +26,4 @@ await writeFile('dist/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlse
 await writeFile('dist/robots.txt',`User-agent: *\nAllow: /\nSitemap: ${origin+base}sitemap.xml\n`);
 await writeFile('dist/404.html',`<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Page introuvable — Terra Desiderius</title><link rel="stylesheet" href="${url('style.css')}"><main class="container section"><h1>Un détour imprévu.</h1><p>Cette page n’existe pas.</p>${link('','Revenir à l’accueil')}</main></html>`);
 console.log(`5 pages générées dans dist — chemin ${base}`);
+await (await import('./build-gallery.mjs')).buildGallery();

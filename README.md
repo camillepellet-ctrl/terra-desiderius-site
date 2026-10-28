@@ -30,3 +30,13 @@ Les valeurs par défaut ciblent l’adresse de projet GitHub Pages, sans configu
 - [Contenus manquants et informations à vérifier](docs/A-VERIFIER.md).
 
 Le workflow `.github/workflows/pages.yml` génère, teste et déploie après un envoi sur `main`, une fois GitHub Pages activé. Le projet livré n’implique pas qu’un déploiement a déjà eu lieu.
+
+## Galerie réutilisable pour Google Sites
+
+Le site statique initial est conservé. La nouvelle galerie autonome se trouve sous `galerie/test/` et `galerie/officielle/` dans `dist`.
+
+- [Installation Google Sites, connexion Sheets et validation officielle](docs/google-sites/INSTALLATION.md).
+- [Description des colonnes et gestes de maintenance](docs/google-sites/COLONNES.md).
+- [CSV à importer dans votre propre Google Sheets](docs/google-sites/vignerons-modele.csv).
+
+`gallery/component/` contient le composant sans dépendance au site hôte. `gallery/data/preview.json` conserve les 17 participants initiaux. `npm run sync:sheets` importe le CSV public indiqué par `SHEETS_CSV_URL` vers le test uniquement. `gallery/official/` est un snapshot complet, modifiable uniquement lors d’une publication explicitement validée. Le workflow de publication sélectionne le bundle d’un run test déjà réussi ; il ne relit pas une feuille ayant pu changer depuis la validation.

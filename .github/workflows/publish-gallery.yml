@@ -1,0 +1,78 @@
+name: Publier la galerie officielle après validation
+on:
+  workflow_dispatch:
+    inputs:
+      version_test:
+        description: 'Numéro du run GitHub Actions de la galerie test validée (moins de 30 jours)'
+        required: true
+        type: string
+      confirmation:
+        description: 'Saisir PUBLIER pour confirmer cette version'
+        required: true
+        type: string
+permissions:
+  contents: write
+  actions: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Vérifier la validation et la version sélectionnée
+        uses: actions/github-script@v7
+        env:
+          CONFIRM_PUBLISH: ${{ inputs.confirmation }}
+          VALIDATION_RUN: ${{ inputs.version_test }}
+        with:
+          script: |
+            if (process.env.CONFIRM_PUBLISH !== 'PUBLIER') throw new Error('Confirmation PUBLIER requise');
+            if (!/^\d+$/.test(process.env.VALIDATION_RUN)) throw new Error('Numéro de run invalide');
+            const {data: run} = await github.rest.actions.getWorkflowRun({...context.repo, run_id: Number(process.env.VALIDATION_RUN)});
+            if (run.conclusion !== 'success' || run.head_branch !== 'main' || run.path !== '.github/workflows/pages.yml') throw new Error('Choisir une version test déployée avec succès depuis main');
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - uses: actions/download-artifact@v4
+        with:
+          name: galerie-test-validation
+          path: /tmp/galerie-validee
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.version_test }}
+      - name: Figer la version déjà validée, sans relire Sheets
+        run: node scripts/promote-gallery.mjs
+        env:
+          CONFIRM_PUBLISH: ${{ inputs.confirmation }}
+          PREVIEW_BUNDLE: /tmp/galerie-validee
+      - run: npm test
+      - run: npm run build
+      - name: Conserver aussi la version test sélectionnée dans ce déploiement
+        run: cp -R /tmp/galerie-validee/. dist/galerie/test/
+      - name: Enregistrer le snapshot officiel
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add gallery/official
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish explicitly validated gallery snapshot"
+            git push origin HEAD:main
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
